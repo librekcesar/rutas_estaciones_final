@@ -16,6 +16,7 @@
 </head>
 <body>
     <div id="map"></div>
+    <button onclick="deselectAll()">Deseleccionar todas las capas</button>
 
     <!-- Descomentar este bloque de código en el github -->
     <script src="https://unpkg.com/leaflet@1.3.0/dist/leaflet.js"></script>
@@ -251,6 +252,14 @@
     };
 
     L.control.layers(null, overlays, {collapsed: false}).addTo(map);
+    
+    function deselectAll() {
+        for (var key in overlays) {
+            if (map.hasLayer(overlays[key])) {
+                map.removeLayer(overlays[key]);
+            }
+        }
+    }    
     </script>
 </body>
 </html>
